@@ -1,5 +1,6 @@
 package com.example.gamer.snackbar;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,26 +12,37 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     private int mCount = 0;
-    Button btn;
+    Button dissnackbar;
     TextView txv;
-    protected Button txtbtn;
-    String mystring = "Snack Bar here";
+    protected Button counti;
+    static int counter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn = (Button) findViewById(R.id.button);
+        dissnackbar = (Button) findViewById(R.id.Snack_bar);
+        counti = (Button) findViewById(R.id.count);
         txv = (TextView)findViewById(R.id.tx);
-        btn.setOnClickListener(new View.OnClickListener() {
+        dissnackbar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                mCount++;
-                txv.setText(Integer.toString(mCount));
-                Toast.makeText(getApplicationContext(),mystring,Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"This  is a Toast message",Toast.LENGTH_SHORT).show();
+                Snackbar.make(view,"Snack bar message", Snackbar.LENGTH_SHORT).show();
             }
         });
 
+        counti.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                counter++;
+                if(txv != null)
+                {
+                    txv.setText(Integer.toString(counter));
+                }
+            }
+        });
 
     }
 
